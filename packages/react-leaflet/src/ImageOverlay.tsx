@@ -5,7 +5,7 @@ import {
   extendContext,
   updateMediaOverlay,
 } from '@react-leaflet/core'
-import { ImageOverlay as LeafletImageOverlay } from 'leaflet'
+import { latLngBounds, ImageOverlay as LeafletImageOverlay } from 'leaflet'
 import type { ReactNode } from 'react'
 
 export interface ImageOverlayProps extends MediaOverlayProps {
@@ -29,7 +29,7 @@ export const ImageOverlay = createLayerComponent<
       overlay.setUrl(props.url)
     }
     if (props.bounds !== prevProps.bounds) {
-      overlay.setBounds(props.bounds)
+      overlay.setBounds(latLngBounds(props.bounds))
     }
   },
 )
